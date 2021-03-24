@@ -1,0 +1,16 @@
+# in the schema we will be doing Query and Mutations
+schema {
+  query: Query
+}
+
+# These are the two queries we will be doing
+type Query {
+  profiles: [Profile!]!
+  search(name: String!): Profile
+}
+
+# profile schema
+type Profile {
+  id: ID!
+  name: String!
+}
