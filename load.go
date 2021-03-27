@@ -38,10 +38,12 @@ func load() []*model.Profile {
 		metaData := meta.Get(context)
 		title := metaData["name"]
 		fmt.Println(slug, title)
+		age := metaData["age"]
 
-		profile := &model.Profile{ID: slug, Name: title.(string)}
+		profile := &model.Profile{ID: slug, Age: age.(int), Name: title.(string)}
 		fmt.Println("validating")
 		err = profile.Validate()
+		fmt.Println(profile)
 
 		if err != nil {
 			panic(err)
