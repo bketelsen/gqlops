@@ -37,8 +37,16 @@ func load() []*model.Profile {
 		}
 		metaData := meta.Get(context)
 		title := metaData["name"]
-		fmt.Print(slug, title)
-		profiles = append(profiles, &model.Profile{ID: slug, Name: title.(string)})
+		fmt.Println(slug, title)
+
+		profile := &model.Profile{ID: slug, Name: title.(string)}
+		fmt.Println("validating")
+		err = profile.Validate()
+
+		if err != nil {
+			panic(err)
+		}
+		profiles = append(profiles, profile)
 	}
 
 	return profiles
